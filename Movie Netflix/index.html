@@ -7,36 +7,26 @@
     </head>
     <body>
         
+        <div ng-view=""></div>
         <div id="movieList" ng-controller="mListCtrl">
-        
-        
-           
             
-            <ol style = "margin: 0 0 -15px 0;">
-                <li>{{movies[0].item}}</li>
+            <h3 class="ListTitle">Silicon Valley </h3>
+        
+            <ol start="1">
+                <li ng-repeat="movie in movies" ng-if="$index >= 0 ">
+                   Episode: "{{movie.item}}"  ,      Ratings: {{movie.averageRating}} ,{{releaseYear}} 
+                    SerialNumber: {{movie.id}}
             </ol>
             
              <h3 class="ListTitle">Number of Seasons {{movies.length}}</h3>
-           
+             <h3 class="ListTitle">Average Ratings: {{movies.length}}</h3>
         
-            <ol start="2">
-                <li ng-repeat="movie in movies" ng-if="$index > 0 ">
-                    {{movie.item}} {{$index}}
-            </ol>
-        <table>
-                <tr ng-repeat-start= "episode in seasons">
-                <td>{{movie.item}}</td>
-                <tr ng-repeat-end>
-                    <td>
-                    {{movie.purchased}}
-                    </td>
-                </tr>
-            </table>
     </div> 
     <script
         src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"
     ></script>
     <script src = "js/exam.js"></script>
+    <script src=”js/controllers/moviesCtrl.js”></script>
     
   </body>     
 </html>
