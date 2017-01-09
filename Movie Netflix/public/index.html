@@ -1,0 +1,86 @@
+<!doctype html>
+<html ng-app="app1">
+<head>
+ 
+  <meta charset="utf-8">
+        <title>Movie Netflix</title>
+        <link href="favicon.png" rel="icon" type="image/png">
+  <link href='http://fonts.googleapis.com/css?family=Roboto|Montserrat:400,700|Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+  <link href="//cdn.jsdelivr.net/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet">
+  <link href="stylesheets/animate.css" rel="stylesheet">
+  <link href="stylesheets/style.css" rel="stylesheet">
+    </head>
+<body>
+<div class="navbar navbar-default navbar-static-top"
+     role="navigation" bs-navbar>
+  <div class="navbar-header">
+    <a class="navbar-brand" href="/">
+      <span class="glyphicon glyphicon-film"></span>
+      Net<strong>Flix</strong></a>
+  </div>
+  <ul class="nav navbar-nav">
+    <li data-match-route="/$"><a href="/">Home</a></li>
+    <li data-match-route="/add"><a href="/add">Add</a></li>
+  </ul>
+  <ul class="nav navbar-nav pull-right" ng-if="!currentUser">
+    <li data-match-route="/login"><a href="/login">Login</a></li>
+    <li data-match-route="/signup"><a href="/signup">Sign up</a></li>
+  </ul>
+  <ul class="nav navbar-nav pull-right" ng-if="currentUser">
+    <li class="navbar-text" ng-bind="currentUser.email"></li>
+    <li><a href="javascript:void(0)" ng-click="logout()">Logout</a></li>
+  </ul>
+</div>
+
+<div class="pull-right">
+                <input class="search" type="text" ng-model="query.name" placeholder="Search...">
+</div>
+    <div ng-view=""></div>
+    
+<div id="movieList" ng-controller="mListCtrl">
+            
+            <h3 class="ListTitle">Silicon Valley </h3>
+        
+            <ol start="1">
+                <li ng-repeat="movie in movies" ng-if="$index >= 0 ">
+                   Episode: "{{movie.item}}"  ,      Ratings: {{movie.averageRating}} ,{{releaseYear}} 
+                    SerialNumber: {{movie.id}}
+            </ol>
+            
+             <h3 class="ListTitle">Number of Seasons {{movies.length}}</h3>
+             <h3 class="ListTitle">Average Ratings: {{movies.length+0.4}}</h3>
+
+
+        
+    </div> 
+
+        
+    <script
+        src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"
+    ></script>
+    <script src = "js/exam.js"></script>
+    <script src=”js/controllers/moviesCtrl.js”></script>
+<script src="vendor/angular-strap.js"></script> 
+<script src="vendor/angular-strap.tpl.js"></script>
+<script src="vendor/angular-messages.js"></script>
+<script src="vendor/angular-resource.js">
+</script>
+<script src="vendor/angular-route.js"></script>
+<script src="vendor/angular-cookies.js"></script>
+<script src="vendor/moment.min.js"></script>
+    
+
+<script src="filters/fromNow.js"></script>
+<script src="directives/uniqueEmail.js"></script>
+<script src="directives/passwordStrength.js"></script>
+<script src="controllers/main.js"></script>
+<script src="controllers/detail.js"></script>
+<script src="controllers/add.js"></script>
+<script src="controllers/navbar.js"></script>
+<script src="controllers/login.js"></script>
+<script src="controllers/signup.js"></script>
+<script src="services/auth.js"></script>
+<script src="services/show.js"></script>
+<script src="services/subscription.js"></script>    
+  </body>     
+</html>
